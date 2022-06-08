@@ -1,7 +1,26 @@
 {
   "name": "react-template",
   "version": "0.1.0",
-  "private": true,
+  "author": {
+    "name": "cozde",
+    "email": "codezdeco@gmail.com",
+    "url": "https://codezdeco.github.io/cozde-blog/"
+  },
+  "repository": {
+    "directory": "/codeZdeco/react-template",
+    "type": "git",
+    "url": "https://github.com/codeZdeco/react-template"
+  },
+  "license": "MIT",
+  "bugs": {
+    "email": "codezdeco@gmail.com",
+    "url": "https://github.com/codeZdeco/react-template/issues"
+  },
+  "description": "Cozde React sample template",
+  "categories": [
+    "Other"
+  ],
+  "private": false,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
     "@testing-library/jest-dom": "^5.16.4",
