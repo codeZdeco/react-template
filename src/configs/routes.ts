@@ -1,5 +1,5 @@
 import { RouteProps } from "@types";
-import { HomePage } from "components/pages";
+import { HomePage, Introduction } from "components/pages";
 /**
  * WARNING: never set path as empty string or only slash string '/'
  * For forwarding to default initial page, using default props of Router wrapper
@@ -7,10 +7,18 @@ import { HomePage } from "components/pages";
 const routes: Array<RouteProps> = [
   {
     path: "home",
-    type: "element",
+    type: "nested",
     element: HomePage,
     exact: true,
     auth: ["guest"],
+    nested: [
+      {
+        path: "",
+        type: "element",
+        element: Introduction,
+        exact: true,
+      },
+    ],
   },
 ];
 
