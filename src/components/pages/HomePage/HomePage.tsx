@@ -35,7 +35,7 @@ function LinkCard(props: LinkCardProps) {
     <Link to={path}>
       <div className='card'>
         <div className='card-media'>
-          <img src={src} alt={alt} />
+          <img className='text-white h-full w-full' src={src} alt={alt} />
         </div>
         <div className='card-content'>
           <p className='card-title'>{title}</p>
@@ -80,13 +80,20 @@ function HomePage() {
             />
           </div>
           <p className='max-w-md mb-4'>Check out some our examples:</p>
-          <div className='flex flex-col gap-2 mb-4'>
+          <div className='flex flex-col gap-4 mb-4'>
             <LinkCard
-              src=''
+              src='https://thumbs.dreamstime.com/b/clipboard-checklist-icon-symbol-web-site-app-design-clipboard-checklist-icon-symbol-web-site-app-design-179943343.jpg'
               path='todo'
               alt='TODO'
-              title='TODO list'
+              title='TODO List'
               subtitle='Example of making simple todo list using plain react hooks'
+            />
+            <LinkCard
+              src='https://static.thenounproject.com/png/644186-200.png'
+              path='snake'
+              alt='Snake'
+              title='Snake Game'
+              subtitle='Simple snake game using ReactJS'
             />
           </div>
         </div>
