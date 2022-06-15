@@ -1,5 +1,5 @@
 import {
-  MemoryRouter as Router,
+  BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
