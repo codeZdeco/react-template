@@ -12,7 +12,6 @@ interface RouteProps {
   alt?: string;
   /** React component for rendering */
   element?: React.ReactComponentElement;
-  exact?: boolean;
   /** Allowed auth roles */
   auth?: Array<RoleProps>;
   /** type=nested only => nested routes */
