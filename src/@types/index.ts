@@ -5,4 +5,5 @@ export type {
   MenuSettingProps,
   RouteSettingProps,
   ThemeSettingProps,
+  SharedComponentProps,
 } from "./Config";

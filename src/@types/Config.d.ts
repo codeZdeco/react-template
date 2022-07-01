@@ -1,3 +1,4 @@
+import { Theme } from "@mui/material";
 import React from "react";
 import RouteProps from "./Route";
 
@@ -9,7 +10,9 @@ export interface ThemeSettingProps {
   /**
    * Available theme collection
    */
-  collections: Array<string>;
+  collections: {
+    [themeKey: string]: Theme;
+  };
 }
 
 export interface RouteSettingProps {
@@ -49,31 +52,42 @@ export interface MenuSettingProps {
 }
 
 export interface SharedComponentProps {
-  active: {
-    /**
-     * Allow use internal dialog
-     */
-    dialog: boolean;
-    /**
-     * Allow use internal toast
-     */
-    alert: boolean;
-    /**
-     * Allow searching available routes of application
-     */
-    search: boolean;
-    /**
-     * Allow record and log notification
-     */
-    notification: boolean;
-    /**
-     * Allow chat messenger
-     */
-    chat: boolean;
-    /**
-     * Allow bot support
-     */
-    bot: boolean;
+  alert: {
+    active: boolean;
+    option?: {
+      anchorOrigin?: {
+        horizontal?: "left" | "center" | "right";
+        vertical?: "top" | "bottom";
+      };
+    };
+  };
+  bot: {
+    active: boolean;
+    option?: {
+      icon?: string;
+      anchorOrigin?: {
+        horizontal?: "left" | "center" | "right";
+        vertical?: "top" | "bottom";
+      };
+    };
+  };
+  search: {
+    active: boolean;
+    option?: {
+      limit?: number /** -1 for unlimited */;
+    };
+  };
+  chat: {
+    active: boolean;
+    option?: {
+      headerMenu?: boolean;
+    };
+  };
+  notification: {
+    active: boolean;
+    option?: {
+      limit?: number /** -1 for unlimited */;
+    };
   };
 }
 

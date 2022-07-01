@@ -1,10 +1,11 @@
-import routes from "configs/routes";
-import { StoreProvider, Router } from "./wrapper";
+import { StoreProvider, Router, ThemeProvider } from "./wrapper";
 
 function App() {
   return (
     <StoreProvider>
-      <Router default='home' routes={routes} />
+      <ThemeProvider>
+        <Router />
+      </ThemeProvider>
     </StoreProvider>
   );
 }

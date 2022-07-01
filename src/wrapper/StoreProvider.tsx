@@ -1,3 +1,7 @@
+/**
+ * >> StoreProvider
+ * Control redux storage
+ */
 import { Provider } from "react-redux";
 import store from "store";
 

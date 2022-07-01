@@ -1,3 +1,8 @@
+/**
+ * >> Router - Route Provider
+ * Control render route paths
+ * Custom route of this application at /src/@cozde/config/route.ts
+ */
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,6 +12,11 @@ import {
 import { RouteProps, RoleProps } from "@types";
 import React from "react";
 import { LoadingScreen } from "components/commons";
+import { useAppSelector } from "store";
+import { RouteType } from "@enum";
+import config from "@cozde/config";
+
+const routeConfig = config.route;
 
 interface PrivateRouteProps {
   auth?: Array<RoleProps>;
@@ -37,25 +47,20 @@ const renderRoute = (route: RouteProps) => {
         </React.Suspense>
       }
     >
-      {routeType === "nested" && nested?.map(renderRoute)}
+      {routeType === RouteType.Nested && nested?.map(renderRoute)}
     </Route>
   );
 };
 
-interface RouterProps {
-  routes: Array<RouteProps>;
-  default: string;
-}
-
-function CustomRouter(props: RouterProps) {
-  const { default: defaultRoute, routes } = props;
+function CustomRouter() {
+  const { default: defaultRoute } = useAppSelector((state) => state.app.route);
 
   return (
     <Router>
       <Routes>
         {/* Default route render */}
         <Route path='/' element={<Navigate to={defaultRoute} />} />
-        {routes.map(renderRoute)}
+        {routeConfig.routes.map(renderRoute)}
       </Routes>
     </Router>
   );
