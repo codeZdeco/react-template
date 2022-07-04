@@ -1,5 +1,5 @@
 import React from "react";
-import RoleProps from "./Role";
+import AuthProps from "./Auth";
 
 export type RouteType = "element" | "nested";
 
@@ -13,7 +13,7 @@ interface RouteProps {
   /** React component for rendering */
   element?: React.ReactComponentElement;
   /** Allowed auth roles */
-  auth?: Array<RoleProps>;
+  auth?: AuthProps;
   /** type=nested only => nested routes */
   nested?: Array<Route>;
 }

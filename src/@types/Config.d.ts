@@ -1,6 +1,7 @@
 import { Theme } from "@mui/material";
 import React from "react";
 import RouteProps from "./Route";
+import AuthProps from "./Auth";
 
 export interface ThemeSettingProps {
   /**
@@ -31,6 +32,7 @@ interface MenuSettingItemProps {
   icon: React.ReactComponentElement;
   url: string;
   tooltip?: string;
+  auth?: AuthProps;
 }
 
 interface MenuSidebarSettingItemProps extends MenuSettingItemProps {

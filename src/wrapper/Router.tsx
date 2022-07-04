@@ -9,7 +9,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { RouteProps, RoleProps } from "@types";
+import { RouteProps, AuthProps } from "@types";
 import React from "react";
 import { LoadingScreen } from "components/commons";
 import { useAppSelector } from "store";
@@ -19,14 +19,14 @@ import config from "@cozde/config";
 const routeConfig = config.route;
 
 interface PrivateRouteProps {
-  auth?: Array<RoleProps>;
+  auth?: AuthProps;
   alt?: string;
   children: React.ReactElement;
 }
 
 function PrivateRoute(props: PrivateRouteProps) {
   const { alt, children } = props;
-  /** Modify this base on user information */
+  /** TODO: Modify this base on user information */
   const isAuth = true;
 
   return isAuth ? children : <Navigate to={alt ? alt : "/"} />;
@@ -59,7 +59,7 @@ function CustomRouter() {
     <Router>
       <Routes>
         {/* Default route render */}
-        <Route path='/' element={<Navigate to={defaultRoute} />} />
+        <Route path="/" element={<Navigate to={defaultRoute} />} />
         {routeConfig.routes.map(renderRoute)}
       </Routes>
     </Router>
