@@ -10,12 +10,14 @@ import {
   Navigate,
 } from "react-router-dom";
 import { RouteProps, AuthProps } from "@types";
-import React from "react";
+import React, { useMemo } from "react";
 import { LoadingScreen } from "components/commons";
 import { useAppSelector } from "store";
 import { RouteType } from "@enum";
 import config from "@cozde/config";
+import { AuthUtils } from "utils";
 
+const DEFAULT_ALT_ROUTE = "/";
 const routeConfig = config.route;
 
 interface PrivateRouteProps {
@@ -25,11 +27,20 @@ interface PrivateRouteProps {
 }
 
 function PrivateRoute(props: PrivateRouteProps) {
-  const { alt, children } = props;
-  /** TODO: Modify this base on user information */
-  const isAuth = true;
+  const { alt, children, auth } = props;
+  const { information: userInformation } = useAppSelector(
+    (state) => state.auth.profile,
+  );
 
-  return isAuth ? children : <Navigate to={alt ? alt : "/"} />;
+  const isAuth = useMemo<boolean>(() => {
+    if (auth && userInformation?.auth) {
+      return AuthUtils.checkMatchedAuth(auth, userInformation?.auth);
+    }
+
+    return true;
+  }, [auth, userInformation?.auth]);
+
+  return isAuth ? children : <Navigate to={alt ? alt : DEFAULT_ALT_ROUTE} />;
 }
 
 const renderRoute = (route: RouteProps) => {
@@ -59,7 +70,7 @@ function CustomRouter() {
     <Router>
       <Routes>
         {/* Default route render */}
-        <Route path="/" element={<Navigate to={defaultRoute} />} />
+        <Route path='/' element={<Navigate to={defaultRoute} />} />
         {routeConfig.routes.map(renderRoute)}
       </Routes>
     </Router>

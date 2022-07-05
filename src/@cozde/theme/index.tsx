@@ -4,6 +4,7 @@ import baseTheme from "./base";
 
 const instance = {};
 
+// Combine custom theme with base theme
 _.keys(collections).map((themeKey: string) => {
   const cloned = _.cloneDeep(baseTheme);
   const themeItem = _.get(collections, themeKey);

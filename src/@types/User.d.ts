@@ -8,6 +8,10 @@ interface UserProps {
   email?: string;
   phone?: string;
   dob?: string;
+  lastname?: string;
+  firstname?: string;
+  displayname?: string;
+  photourl?: string;
 }
 
 export default UserProps;

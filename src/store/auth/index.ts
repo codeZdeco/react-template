@@ -1,9 +1,9 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import user from "./userSlice";
+import profile from "./profileSlice";
 
 const createReducer = combineReducers({
   /** Add extra reducers */
-  user,
+  profile,
 });
 
 export default createReducer;

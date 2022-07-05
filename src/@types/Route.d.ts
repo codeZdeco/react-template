@@ -4,7 +4,7 @@ import AuthProps from "./Auth";
 export type RouteType = "element" | "nested";
 
 interface RouteProps {
-  /** Type of route, boundary or element */
+  /** Type of route, nested or element */
   type: RouteType;
   /** Path to element */
   path: string;

@@ -49,7 +49,7 @@ function LinkCard(props: LinkCardProps) {
 function HomePage() {
   return (
     <div className='h-screen w-screen flex flex-row'>
-      <div className='flex w-1/2 items-center justify-center left-side'>
+      <div className='flex w-full items-center justify-center left-side'>
         <div className='flex flex-col text-white'>
           <p className='text-5xl mb-8 neon'>CodeZDeco</p>
           <p className='max-w-md mb-4'>
@@ -98,9 +98,9 @@ function HomePage() {
           </div>
         </div>
       </div>
-      <div className='grow'>
+      {/* <div className='grow'>
         <Outlet />
-      </div>
+      </div> */}
     </div>
   );
 }

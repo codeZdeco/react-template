@@ -1,30 +1,30 @@
 import { RouteSettingProps } from "@types";
 import { RouteType } from "@enum";
-import { HomePage, Introduction, TodoList, SnakeGame } from "components/pages";
+import { HomePage, Introduction } from "components/pages";
+
+export const paths: { [path: string]: string } = {
+  home: "home",
+  feed: "feeds",
+  user: "users",
+  setting: "setting",
+};
 
 const instance: RouteSettingProps = {
   default: "home",
   routes: [
     {
-      path: "home",
+      path: paths.home,
       type: RouteType.Nested,
       element: HomePage,
-      auth: ["guest"],
+      auth: [
+        { role: "guest", group: "development" },
+        { role: "guest", group: "marketing" },
+      ],
       nested: [
         {
           path: "",
           type: RouteType.Element,
           element: Introduction,
-        },
-        {
-          path: "todo",
-          type: RouteType.Element,
-          element: TodoList,
-        },
-        {
-          path: "snake",
-          type: RouteType.Element,
-          element: SnakeGame,
         },
       ],
     },

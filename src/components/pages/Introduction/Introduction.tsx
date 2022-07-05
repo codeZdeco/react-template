@@ -1,9 +1,9 @@
+import { useAppSelector } from "store";
+
 function Introduction() {
-  return (
-    <div className='container mx-auto p-4'>
-      <iframe src='https://www.w3schools.com' title='intro'></iframe>
-    </div>
-  );
+  const data = useAppSelector((state) => state.auth.profile.information);
+
+  return <div className='container mx-auto p-4'>hello {data?.fullname}</div>;
 }
 
 export default Introduction;

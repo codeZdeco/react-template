@@ -1,11 +1,37 @@
-import { configureStore, ThunkDispatch, ThunkAction } from "@reduxjs/toolkit";
+import {
+  configureStore,
+  ThunkDispatch,
+  ThunkAction,
+  createListenerMiddleware,
+  isAnyOf,
+} from "@reduxjs/toolkit";
 import createReducer from "./rootReducer";
 import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
 import { AnyAction } from "redux";
 import reducer from "./rootReducer";
+import { alert } from "./app/alertSlice";
+
+import { getProfileInfo } from "./auth/profileSlice";
 
 // Initial states
 const preloadedState = {};
+
+const listenerMiddleware = createListenerMiddleware();
+
+listenerMiddleware.startListening({
+  matcher: isAnyOf(getProfileInfo.rejected),
+  effect: async (_action, listenerApi) => {
+    const { dispatch } = listenerApi;
+
+    /** Catching all rejected states */
+    dispatch(
+      alert({
+        variant: "error",
+        message: "Something went wrong!",
+      }),
+    );
+  },
+});
 
 const store = configureStore({
   reducer: createReducer(),
@@ -16,7 +42,7 @@ const store = configureStore({
       return getDefaultMiddleware().concat(logger);
     }
 
-    return getDefaultMiddleware();
+    return getDefaultMiddleware().prepend(listenerMiddleware.middleware);
   },
   devTools: process.env.NODE_ENV === "development",
   preloadedState,
