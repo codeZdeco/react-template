@@ -2,7 +2,8 @@ import { ThemeSettingProps } from "@types";
 import collections from "@cozde/theme";
 
 const instance: ThemeSettingProps = {
-  default: "default",
+  default: "dark",
+  hasDivider: true,
   collections,
 };
 

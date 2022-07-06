@@ -6,10 +6,10 @@
  */
 import { Theme, ThemeProvider as MuiThemeProvider } from "@mui/material";
 import { useAppSelector } from "store";
-import config from "@cozde/config";
+import { ThemeConfig } from "@cozde/config";
 import { useMemo } from "react";
 
-const { collections } = config.theme;
+const { collections } = ThemeConfig;
 
 interface ThemeProviderProps {
   children: React.ReactNode;

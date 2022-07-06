@@ -5,7 +5,7 @@
  */
 
 function Code404Page() {
-  return <div></div>;
+  return <div>404</div>;
 }
 
 export default Code404Page;

@@ -11,6 +11,7 @@ export interface ThemeSettingProps {
   /**
    * Available theme collection
    */
+  hasDivider: boolean;
   collections: {
     [themeKey: string]: Theme;
   };
@@ -27,15 +28,15 @@ export interface RouteSettingProps {
   routes: Array<RouteProps>;
 }
 
-interface MenuSettingItemProps {
+export interface MenuSettingItemProps {
   label: string;
-  icon: React.ReactComponentElement;
+  icon: string;
   url: string;
   tooltip?: string;
   auth?: AuthProps;
 }
 
-interface MenuSidebarSettingItemProps extends MenuSettingItemProps {
+export interface MenuSidebarSettingItemProps extends MenuSettingItemProps {
   position: "top" | "center" | "bottom";
 }
 

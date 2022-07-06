@@ -12,13 +12,13 @@ import {
 import { RouteProps, AuthProps } from "@types";
 import React, { useMemo } from "react";
 import { LoadingScreen } from "components/commons";
+import { ErrorPage } from "components/pages";
 import { useAppSelector } from "store";
 import { RouteType } from "@enum";
-import config from "@cozde/config";
+import { RouteConfig } from "@cozde/config";
 import { AuthUtils } from "utils";
 
 const DEFAULT_ALT_ROUTE = "/";
-const routeConfig = config.route;
 
 interface PrivateRouteProps {
   auth?: AuthProps;
@@ -66,12 +66,15 @@ const renderRoute = (route: RouteProps) => {
 function CustomRouter() {
   const { default: defaultRoute } = useAppSelector((state) => state.app.route);
 
+  const NotFoundPage = ErrorPage[404];
+
   return (
     <Router>
       <Routes>
         {/* Default route render */}
         <Route path='/' element={<Navigate to={defaultRoute} />} />
-        {routeConfig.routes.map(renderRoute)}
+        {RouteConfig.routes.map(renderRoute)}
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </Router>
   );

@@ -6,12 +6,16 @@ interface AsyncReducersProps {
   [key: string]: any;
 }
 
+export const rootReducer = {
+  app,
+  auth,
+};
+
 const createReducer = (asyncReducers?: AsyncReducersProps) =>
   combineReducers({
     /** Add extra reducers */
     ...asyncReducers,
-    app,
-    auth,
+    ...rootReducer,
   });
 
 export default createReducer;

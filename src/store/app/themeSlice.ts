@@ -1,14 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import config from "@cozde/config";
-
-const themeConfig = config.theme;
+import { ThemeConfig } from "@cozde/config";
 
 export interface ThemeInitialProps {
   selected: string;
 }
 
 const initialState: ThemeInitialProps = {
-  selected: themeConfig.default /** Default selected theme */,
+  selected: ThemeConfig.default /** Default selected theme */,
 };
 
 const themeSlice = createSlice({

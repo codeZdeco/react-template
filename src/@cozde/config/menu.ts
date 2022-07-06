@@ -4,35 +4,35 @@ const instance: MenuSettingProps = {
   sidebar: [
     {
       label: "Dashboard",
-      icon: null,
+      icon: "dashboard",
       url: "home",
       tooltip: "Dashboard",
       position: "top",
     },
     {
       label: "Feeds",
-      icon: null,
+      icon: "chat",
       url: "feed",
       tooltip: "New feeds",
       position: "center",
     },
     {
       label: "Utilities",
-      icon: null,
+      icon: "construction",
       url: "utils",
       tooltip: "Utilities",
       position: "center",
     },
     {
       label: "Users",
-      icon: null,
+      icon: "group",
       url: "users",
       tooltip: "Users",
       position: "center",
     },
     {
       label: "Configuration",
-      icon: null,
+      icon: "settings",
       url: "configs",
       tooltip: "Configuration",
       position: "bottom",
@@ -42,12 +42,12 @@ const instance: MenuSettingProps = {
     profile: [
       {
         label: "Profile",
-        icon: null,
+        icon: "star",
         url: "profile",
       },
       {
         label: "Setting",
-        icon: null,
+        icon: "star",
         url: "setting",
       },
     ],

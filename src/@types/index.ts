@@ -8,5 +8,7 @@ export type {
   RouteSettingProps,
   ThemeSettingProps,
   SharedComponentProps,
+  MenuSettingItemProps,
+  MenuSidebarSettingItemProps,
 } from "./Config";
 export type { default as AuthProps, AuthItemProps } from "./Auth";
