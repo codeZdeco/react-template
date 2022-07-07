@@ -8,6 +8,7 @@ import {
   Stack,
   IconButton,
   TextField,
+  Autocomplete,
 } from "@mui/material";
 
 const AvatarButton = styled(Button)(
@@ -50,10 +51,17 @@ function Header() {
       {/* Extensions */}
       <Stack direction='row'></Stack>
       <Stack direction='row'>
-        <SearchField
-          variant='outlined'
+        <Autocomplete
+          options={[]}
           size='small'
-          placeholder='Search for anything'
+          renderInput={(params) => (
+            <SearchField
+              variant='outlined'
+              placeholder='Search for anything'
+              {...params}
+            />
+          )}
+          popupIcon={<Icon>search</Icon>}
         />
       </Stack>
       <Stack direction='row' gap={theme.spacing(2)}>

@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-import "./HomePage.css";
+// import "./HomePage.css";
 
 interface TechBadgeProps {
   alt: string;

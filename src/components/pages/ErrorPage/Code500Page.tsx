@@ -4,7 +4,7 @@
  */
 
 function Code500Page() {
-  return <div></div>;
+  return <div>500</div>;
 }
 
 export default Code500Page;

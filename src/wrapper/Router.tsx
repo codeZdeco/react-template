@@ -12,7 +12,7 @@ import {
 import { RouteProps, AuthProps } from "@types";
 import React, { useMemo } from "react";
 import { LoadingScreen } from "components/commons";
-import { ErrorPage } from "components/pages";
+import { NotFoundPage } from "components/pages";
 import { useAppSelector } from "store";
 import { RouteType } from "@enum";
 import { RouteConfig } from "@cozde/config";
@@ -59,14 +59,13 @@ const renderRoute = (route: RouteProps) => {
       }
     >
       {routeType === RouteType.Nested && nested?.map(renderRoute)}
+      <Route path='*' element={<NotFoundPage />} />
     </Route>
   );
 };
 
 function CustomRouter() {
   const { default: defaultRoute } = useAppSelector((state) => state.app.route);
-
-  const NotFoundPage = ErrorPage[404];
 
   return (
     <Router>

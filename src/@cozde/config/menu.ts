@@ -5,7 +5,7 @@ const instance: MenuSettingProps = {
     {
       label: "Dashboard",
       icon: "dashboard",
-      url: "home",
+      url: "dashboard",
       tooltip: "Dashboard",
       position: "top",
     },

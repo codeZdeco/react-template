@@ -1,5 +1,4 @@
 import { Theme } from "@mui/material";
-import React from "react";
 import RouteProps from "./Route";
 import AuthProps from "./Auth";
 

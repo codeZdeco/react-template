@@ -1,14 +1,12 @@
 import { RouteSettingProps } from "@types";
 import { RouteType } from "@enum";
-import { HomePage, ErrorPage } from "components/pages";
+import { HomePage, Introduction } from "components/pages";
 import CMSBaseLayout from "@cozde/layout/CMSBaseLayout";
-
-const NotFoundPage = ErrorPage[404];
 
 export const paths: { [path: string]: string } = {
   home: "home",
   dashboard: "dashboard",
-  feed: "feeds",
+  feed: "feed",
   user: "users",
   setting: "setting",
 };
@@ -26,7 +24,7 @@ const instance: RouteSettingProps = {
       ],
       nested: [
         { path: paths.dashboard, type: RouteType.Element, element: HomePage },
-        { path: "*", type: RouteType.Element, element: NotFoundPage },
+        { path: paths.feed, type: RouteType.Element, element: Introduction },
       ],
     },
   ],
