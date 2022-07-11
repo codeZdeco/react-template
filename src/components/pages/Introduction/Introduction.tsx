@@ -1,9 +1,7 @@
 import { useAppSelector } from "store";
 
-function Introduction() {
-  const data = useAppSelector((state) => state.auth.profile.information);
+export default function IntroductionPage() {
+  const _state = useAppSelector((state) => state);
 
-  return <div className='container mx-auto p-4'>hello {data?.fullname}</div>;
+  return <div>{}</div>;
 }
-
-export default Introduction;

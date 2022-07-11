@@ -1,7 +1,8 @@
 import { RouteSettingProps } from "@types";
 import { RouteType } from "@enum";
-import { HomePage, Introduction } from "components/pages";
+import Introduction from "components/pages/Introduction";
 import CMSBaseLayout from "@cozde/layout/CMSBaseLayout";
+import { HomePage } from "components/pages";
 
 export const paths: { [path: string]: string } = {
   home: "home",
@@ -17,14 +18,22 @@ const instance: RouteSettingProps = {
     {
       path: paths.home,
       type: RouteType.Nested,
-      element: CMSBaseLayout,
+      element: <CMSBaseLayout />,
       auth: [
         { role: "guest", group: "development" },
         { role: "guest", group: "marketing" },
       ],
-      nested: [
-        { path: paths.dashboard, type: RouteType.Element, element: HomePage },
-        { path: paths.feed, type: RouteType.Element, element: Introduction },
+      children: [
+        {
+          path: paths.dashboard,
+          type: RouteType.Element,
+          element: <HomePage />,
+        },
+        {
+          path: paths.feed,
+          type: RouteType.Element,
+          element: <Introduction />,
+        },
       ],
     },
   ],

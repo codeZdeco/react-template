@@ -1,21 +1,18 @@
-import React from "react";
 import AuthProps from "./Auth";
+import { RouteType as RouteEnum } from "@enum";
+import { RouteObject } from "react-router-dom";
 
-export type RouteType = "element" | "nested";
+export type RouteType = RouteEnum.Element | RouteEnum.Nested;
 
-interface RouteProps {
+interface RouteProps extends RouteObject {
   /** Type of route, nested or element */
   type: RouteType;
-  /** Path to element */
-  path: string;
   /** Alternate path when failing authentication */
   alt?: string;
-  /** React component for rendering */
-  element?: React.ReactComponentElement;
   /** Allowed auth roles */
   auth?: AuthProps;
-  /** type=nested only => nested routes */
-  nested?: Array<Route>;
+  element: JSX.Element;
+  children?: Array<RouteProps>;
 }
 
 export default RouteProps;

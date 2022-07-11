@@ -39,7 +39,9 @@ const store = configureStore({
     if (process.env.NODE_ENV === "development") {
       const { logger } = require(`redux-logger`);
 
-      return getDefaultMiddleware().concat(logger);
+      return getDefaultMiddleware()
+        .concat(logger)
+        .prepend(listenerMiddleware.middleware);
     }
 
     return getDefaultMiddleware().prepend(listenerMiddleware.middleware);
