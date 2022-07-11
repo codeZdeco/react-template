@@ -3,7 +3,7 @@ import { createTheme } from "@mui/material";
 const instance = createTheme({
   palette: {
     mode: "dark",
-    divider: "#575757",
+    divider: "#3a3a3a",
     primary: {
       main: "#dab548",
       dark: "#393526",
@@ -19,6 +19,11 @@ const instance = createTheme({
     background: {
       paper: "#302f2d",
       default: "#252422",
+    },
+    text: {
+      primary: "#f0f0f0",
+      secondary: "#dab548",
+      disabled: "#8e8e8e",
     },
   },
   components: {

@@ -1,39 +1,40 @@
 import { MenuSettingProps } from "@types";
+import { paths } from "./route";
 
 const instance: MenuSettingProps = {
   sidebar: [
     {
       label: "Dashboard",
       icon: "dashboard",
-      url: "dashboard",
+      url: paths.dashboard,
       tooltip: "Dashboard",
       position: "top",
     },
     {
       label: "Feeds",
       icon: "chat",
-      url: "feed",
+      url: paths.feed,
       tooltip: "New feeds",
       position: "center",
     },
     {
       label: "Utilities",
       icon: "construction",
-      url: "utils",
+      url: paths.utils,
       tooltip: "Utilities",
       position: "center",
     },
     {
       label: "Users",
       icon: "group",
-      url: "users",
+      url: paths.user,
       tooltip: "Users",
       position: "center",
     },
     {
       label: "Configuration",
       icon: "settings",
-      url: "configs",
+      url: paths.setting,
       tooltip: "Configuration",
       position: "bottom",
     },
@@ -43,12 +44,12 @@ const instance: MenuSettingProps = {
       {
         label: "Profile",
         icon: "star",
-        url: "profile",
+        url: paths.profile,
       },
       {
         label: "Setting",
         icon: "star",
-        url: "setting",
+        url: paths.user_setting,
       },
     ],
     extension: [],

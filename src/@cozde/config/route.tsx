@@ -1,19 +1,21 @@
 import { RouteSettingProps } from "@types";
 import { RouteType } from "@enum";
-import Introduction from "components/pages/Introduction";
 import CMSBaseLayout from "@cozde/layout/CMSBaseLayout";
-import { HomePage } from "components/pages";
+import { HomePage, FeedPage } from "components/pages";
 
 export const paths: { [path: string]: string } = {
   home: "home",
   dashboard: "dashboard",
   feed: "feed",
+  utils: "utils",
   user: "users",
   setting: "setting",
+  profile: "profile",
+  user_setting: "user/setting",
 };
 
 const instance: RouteSettingProps = {
-  default: "/home" /** Must be different from '/' */,
+  default: "/home/dashboard" /** Must be different from '/' */,
   routes: [
     {
       path: paths.home,
@@ -32,7 +34,7 @@ const instance: RouteSettingProps = {
         {
           path: paths.feed,
           type: RouteType.Element,
-          element: <Introduction />,
+          element: <FeedPage />,
         },
       ],
     },

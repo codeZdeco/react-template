@@ -10,6 +10,7 @@ import {
   TextField,
   Autocomplete,
 } from "@mui/material";
+import { ThemeConfig } from "@cozde/config";
 
 const AvatarButton = styled(Button)(
   ({ theme }) => `
@@ -26,7 +27,7 @@ const AvatarButton = styled(Button)(
 
 const SearchField = styled(TextField)(
   ({ theme }) => `
-    & .MuiOutlinedInput-root {
+    & .MuiInput-root, .MuiOutlinedInput-root {
       border-radius: ${theme.spacing(2)};
       width: ${theme.spacing(40)};
     }
@@ -49,14 +50,14 @@ function Header() {
       }}
     >
       {/* Extensions */}
-      <Stack direction='row'></Stack>
+      {/* <Stack direction='row'></Stack> */}
       <Stack direction='row'>
         <Autocomplete
           options={[]}
           size='small'
           renderInput={(params) => (
             <SearchField
-              variant='outlined'
+              variant={ThemeConfig.hasDivider ? "outlined" : "standard"}
               placeholder='Search for anything'
               {...params}
             />
@@ -71,7 +72,7 @@ function Header() {
         <IconButton size='small'>
           <Icon color='primary'>forum</Icon>
         </IconButton>
-        <AvatarButton variant='outlined'>
+        <AvatarButton variant={ThemeConfig.hasDivider ? "outlined" : "text"}>
           <Avatar sx={{ width: avatarSize, height: avatarSize }}>H</Avatar>
           <Typography>John Doe</Typography>
           <Icon>expand_more</Icon>

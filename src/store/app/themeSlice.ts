@@ -4,7 +4,7 @@ import { ThemeConfig } from "@cozde/config";
 export interface ThemeInitialProps {
   selected: string;
 }
-console.log(">>", ThemeConfig);
+
 const initialState: ThemeInitialProps = {
   selected: ThemeConfig.default /** Default selected theme */,
 };

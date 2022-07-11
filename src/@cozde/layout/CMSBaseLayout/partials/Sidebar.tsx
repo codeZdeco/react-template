@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useResolvedPath, useMatch, To } from "react-router-dom";
 import { MenuSidebarSettingItemProps } from "@types";
 import { MenuConfig, ThemeConfig } from "@cozde/config";
 import {
@@ -45,20 +45,24 @@ const SidebarMenuButton = styled(Button)(
 `,
 );
 
-interface SidebarMenuItemProps extends MenuSidebarSettingItemProps {
-  active: boolean;
-}
-
-function SidebarMenuItem(props: SidebarMenuItemProps) {
+function SidebarMenuItem(props: MenuSidebarSettingItemProps) {
+  const { icon, url, tooltip } = props;
+  const toUrl: To = {
+    pathname: url,
+  };
   const navigate = useNavigate();
-  const { icon, url, tooltip, active } = props;
+  const resolved = useResolvedPath(toUrl);
+  const match = useMatch({
+    path: resolved ? resolved.pathname : url,
+    end: true,
+  });
 
   const handleRedirect = () => navigate(url);
 
   return (
     <Tooltip title={tooltip || ""} placement='right'>
       <SidebarMenuButton onClick={handleRedirect}>
-        <Box className={clsx("cover", active && "active")}>
+        <Box className={clsx("cover", !!match && "active")}>
           <Icon>{icon}</Icon>
         </Box>
       </SidebarMenuButton>
@@ -96,13 +100,7 @@ function Sidebar() {
 
   const renderSidebarMenuItem = useCallback(
     (item: MenuSidebarSettingItemProps) => {
-      return (
-        <SidebarMenuItem
-          key={item.label}
-          {...item}
-          active={"home" === item.url}
-        />
-      );
+      return <SidebarMenuItem key={item.label} {...item} />;
     },
     [],
   );
@@ -114,7 +112,6 @@ function Sidebar() {
         backgroundColor: "background.paper",
       }}
       flexDirection='column'
-      // alignItems='center'
       divider={ThemeConfig.hasDivider && <Divider variant='middle' />}
     >
       <Logo />

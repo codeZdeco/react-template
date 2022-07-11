@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RouteConfig } from "@cozde/config";
+
+const defaultRoute = "/home/dashboard";
 
 export interface ThemeInitialProps {
   default: string;
@@ -7,8 +8,8 @@ export interface ThemeInitialProps {
 }
 
 const initialState: ThemeInitialProps = {
-  default: RouteConfig.default,
-  selected: RouteConfig.default /** Default selected theme */,
+  default: defaultRoute,
+  selected: defaultRoute /** Default selected theme */,
 };
 
 const themeSlice = createSlice({

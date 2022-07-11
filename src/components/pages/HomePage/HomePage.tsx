@@ -1,53 +1,40 @@
-import { Outlet, Link } from "react-router-dom";
-// import "./HomePage.css";
+import { Box, Typography } from "@mui/material";
+import { Container, SectionBox } from "components/commons";
 
-interface TechBadgeProps {
-  alt: string;
-  path: string;
-  label: string;
-}
-
-function TechBadge(props: TechBadgeProps) {
-  const { alt, path, label } = props;
-
+function AnalysisSection() {
   return (
-    <div className='badge'>
-      <div className='badge-icon-context'>
-        <img alt={alt} src={path} />
-      </div>
-      <p className='badge-label'>{label}</p>
-    </div>
+    <Box className='grow-3 flex flex-col gap-6'>
+      <Typography color='text.primary'>Analysis</Typography>
+      <Box className='flex flex-row gap-6'>
+        <SectionBox className='grow h-56'></SectionBox>
+        <SectionBox className='grow h-56'></SectionBox>
+        <SectionBox className='grow h-56'></SectionBox>
+      </Box>
+      <SectionBox className='grow'></SectionBox>
+      <Box className='h-64 flex flex-row gap-6'>
+        <SectionBox className='grow-5'></SectionBox>
+        <SectionBox className='grow-3'></SectionBox>
+      </Box>
+    </Box>
   );
 }
 
-interface LinkCardProps {
-  path: string;
-  alt: string;
-  src: string;
-  title: string;
-  subtitle: string;
-}
-
-function LinkCard(props: LinkCardProps) {
-  const { path, title, subtitle, src, alt } = props;
-
+function ActivitySection() {
   return (
-    <Link to={path}>
-      <div className='card'>
-        <div className='card-media'>
-          <img className='text-white h-full w-full' src={src} alt={alt} />
-        </div>
-        <div className='card-content'>
-          <p className='card-title'>{title}</p>
-          <p className='card-subtitle'>{subtitle}</p>
-        </div>
-      </div>
-    </Link>
+    <Box className='grow-1 flex flex-col gap-6'>
+      <Typography color='text.primary'>Activities</Typography>
+      <SectionBox className='grow'></SectionBox>
+    </Box>
   );
 }
 
 function HomePage() {
-  return <div className='flex flex-row h-full'></div>;
+  return (
+    <Container className='flex-row'>
+      <AnalysisSection />
+      <ActivitySection />
+    </Container>
+  );
 }
 
 export default HomePage;
