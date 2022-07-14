@@ -10,5 +10,7 @@ export type {
   SharedComponentProps,
   MenuSettingItemProps,
   MenuSidebarSettingItemProps,
+  LangItemProps,
+  LangaugeSettingProps,
 } from "./Config";
 export type { default as AuthProps, AuthItemProps } from "./Auth";

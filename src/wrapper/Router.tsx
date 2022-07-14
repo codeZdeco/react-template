@@ -67,6 +67,8 @@ function Routes() {
     const { children, auth, alt, element, index, path } = route;
     const isParent = !!children;
 
+    const isAuth = !!auth && auth.length !== 0;
+
     // Map from custom props into react router v6 props
     isParent &&
       (function () {
@@ -79,9 +81,13 @@ function Routes() {
       index: index ? index : path === defaultRoute,
       element: (
         <React.Suspense fallback={<LoadingScreen />}>
-          <PrivateRoute auth={auth} alt={alt}>
-            {element}
-          </PrivateRoute>
+          {isAuth ? (
+            <PrivateRoute auth={auth} alt={alt}>
+              {element}
+            </PrivateRoute>
+          ) : (
+            element
+          )}
         </React.Suspense>
       ),
       children: isParent ? [...children, notFoundRoute] : undefined,

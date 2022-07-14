@@ -1,4 +1,5 @@
 import { Theme } from "@mui/material";
+import { InitOptions } from "i18next";
 import RouteProps from "./Route";
 import AuthProps from "./Auth";
 
@@ -93,11 +94,24 @@ export interface SharedComponentProps {
   };
 }
 
+export interface LangItemProps {
+  name: string;
+  code: string;
+  country_code: string;
+  icon: string;
+}
+
+export interface LangaugeSettingProps {
+  langs: Array<LangItemProps>;
+  options: InitOptions;
+}
+
 interface AppSettingProps {
   theme: ThemeSettingProps;
   route: RouteSettingProps;
   menu: MenuSettingProps;
   shared: SharedComponentProps;
+  lang: LangaugeSettingProps;
 }
 
 export default AppSettingProps;

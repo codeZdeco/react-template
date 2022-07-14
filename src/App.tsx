@@ -1,10 +1,20 @@
-import { StoreProvider, Router, ThemeProvider } from "./wrapper";
+import {
+  StoreProvider,
+  Router,
+  ThemeProvider,
+  I18nProvider,
+  SharedContainer,
+} from "./wrapper";
 
 function App() {
   return (
     <StoreProvider>
       <ThemeProvider>
-        <Router />
+        <I18nProvider>
+          <SharedContainer>
+            <Router />
+          </SharedContainer>
+        </I18nProvider>
       </ThemeProvider>
     </StoreProvider>
   );
