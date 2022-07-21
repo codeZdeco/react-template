@@ -1,12 +1,12 @@
 import i18next from "i18next";
 import cookies from "js-cookie";
 import { useTranslation } from "react-i18next";
-import { i18nConfig } from "@cozde/config";
+import { LangConfig } from "@cozde/config";
 
 const useLanguage = () => {
   const currentLanguageCode = cookies.get("i18next") || "en";
 
-  const currentLanguage = i18nConfig.langs.find(
+  const currentLanguage = LangConfig.langs.find(
     (lang) => lang.code === currentLanguageCode,
   );
 

@@ -1,3 +1,4 @@
+import _ from '@lodash';
 import i18next from "i18next";
 import { initReactI18next } from "react-i18next";
 import HttpApi from "i18next-http-backend";
@@ -17,7 +18,7 @@ function LingProvider(props: LingProviderProps) {
   const { children } = props;
   const config = useAppSelector((state) => state.app.i18n);
 
-  instance.init(config.options);
+  instance.init(_.cloneDeep(config.options));
 
   return <>{children}</>;
 }
