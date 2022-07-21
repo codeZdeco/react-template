@@ -26,8 +26,9 @@ function TagSection() {
 
 function FeedSection() {
   return (
-    <Box className='flex flex-col gap-6 w-[30rem]'>
+    <Box className='flex flex-col gap-6 w-[30rem] relative'>
       <MessagePostBox />
+      
     </Box>
   );
 }
