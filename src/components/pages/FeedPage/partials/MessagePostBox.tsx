@@ -13,7 +13,7 @@ const MessageField = styled(TextField)(
 function MessagePostBox() {
   return (
     <SectionBox
-      className='flex flex-col min-h-[6rem] justify-between sticky'
+      className='flex flex-col min-h-[6rem] justify-between'
       sx={{
         borderBottomLeftRadius: 0,
         borderBottomRightRadius: 0,

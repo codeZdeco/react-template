@@ -1,4 +1,4 @@
-import { Card, CardHeader, Avatar, CardContent, Typography, CardActions } from '@mui/material';
+import { Card, CardHeader, Avatar, CardContent, Typography, CardActions, TextField } from '@mui/material';
 import { UserProps } from '@types';
 import moment from 'moment';
 import { useEffect } from 'react';
@@ -34,7 +34,7 @@ function StatusPostBox(props: StatusPostBoxProps) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        
+        <TextField fullWidth size='small' multiline />
       </CardActions>
     </Card>
   );

@@ -1,10 +1,11 @@
 import { Box, Typography } from "@mui/material";
+import { UserProps } from '@types';
 import { Container, HashTagButton } from "components/commons";
-import { MessagePostBox } from "./partials";
+import { MessagePostBox, StatusPostBox } from "./partials";
 
 function TagSection() {
   return (
-    <Box className='flex flex-col gap-6 w-80'>
+    <Box className='flex flex-col gap-6 w-80 sticky top-0 h-fit'>
       <Typography color='text.primary'>Trending</Typography>
       <Box className='flex flex-wrap gap-3'>
         <HashTagButton icon='tag'>cozde</HashTagButton>
@@ -25,10 +26,26 @@ function TagSection() {
 }
 
 function FeedSection() {
+  const fakeUser: UserProps = {
+    photourl: '',
+    displayname: 'John Doe',
+    fullname: 'John',
+    auth: [{ group: 'development', role: 'admin' }],
+    username: 'admin'
+  };
+
   return (
-    <Box className='flex flex-col gap-6 w-[30rem] relative'>
+    <Box className='flex flex-col gap-6 w-[30rem]'>
       <MessagePostBox />
-      
+      <Box className='w-full flex flex-col gap-6'>
+        <StatusPostBox postId='1' timestamp={new Date().getTime()} message='hello world' user={fakeUser} />
+        <StatusPostBox postId='1' timestamp={new Date().getTime()} message='hello world' user={fakeUser} />
+        <StatusPostBox postId='1' timestamp={new Date().getTime()} message='hello world' user={fakeUser} />
+        <StatusPostBox postId='1' timestamp={new Date().getTime()} message='hello world' user={fakeUser} />
+        <StatusPostBox postId='1' timestamp={new Date().getTime()} message='hello world' user={fakeUser} />
+        <StatusPostBox postId='1' timestamp={new Date().getTime()} message='hello world' user={fakeUser} />
+        <StatusPostBox postId='1' timestamp={new Date().getTime()} message='hello world' user={fakeUser} />
+      </Box>
     </Box>
   );
 }
@@ -39,10 +56,12 @@ function StatusSection() {
 
 function FeedPage() {
   return (
-    <Container className='flex-row justify-between'>
-      <TagSection />
-      <FeedSection />
-      <StatusSection />
+    <Container className='overflow-auto'>
+      <Box className='w-full flex flex-row justify-between relative h-fit'>
+        <TagSection />
+        <FeedSection />
+        <StatusSection />
+      </Box>
     </Container>
   );
 }
