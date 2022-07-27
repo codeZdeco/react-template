@@ -1,4 +1,4 @@
-import { Card, CardHeader, Avatar, CardContent, Typography, CardActions, TextField } from '@mui/material';
+import { Card, CardHeader, Avatar, CardContent, Typography, CardActions, Box, TextField, IconButton, Icon } from '@mui/material';
 import { UserProps } from '@types';
 import moment from 'moment';
 import { useEffect } from 'react';
@@ -26,7 +26,12 @@ function StatusPostBox(props: StatusPostBoxProps) {
       <CardHeader
         avatar={<Avatar>{displayname || fullname}</Avatar>}
         title={displayname || fullname}
-        subtitle={moment(timestamp).format('MMMM Do YYYY, h:mm:ss a')}
+        subheader={moment(timestamp).format('MMMM Do YYYY, h:mm:ss a')}
+        action={
+          <IconButton aria-label="settings">
+            <Icon>more_vert</Icon>
+          </IconButton>
+        }
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
@@ -34,7 +39,19 @@ function StatusPostBox(props: StatusPostBoxProps) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
-        <TextField fullWidth size='small' multiline />
+        <Box className='w-full flex flex-row justify-between items-center'>
+          <Box className='flex flex-row'>
+            <IconButton size='small' aria-label="like">
+              <Icon>favorite_outlined</Icon>
+            </IconButton>
+            <IconButton size='small' aria-label="like">
+              <Icon>comment</Icon>
+            </IconButton>
+          </Box>
+          <IconButton size='small' aria-label="like">
+            <Icon>share</Icon>
+          </IconButton>
+        </Box>
       </CardActions>
     </Card>
   );

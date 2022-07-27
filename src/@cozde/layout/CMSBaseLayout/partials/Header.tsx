@@ -10,6 +10,7 @@ import {
   TextField,
   Autocomplete,
 } from "@mui/material";
+import { FlagIcon } from '@cozde/core';
 import { ThemeConfig } from "@cozde/config";
 
 const AvatarButton = styled(Button)(
@@ -71,6 +72,9 @@ function Header() {
         </IconButton>
         <IconButton size='small'>
           <Icon color='primary'>forum</Icon>
+        </IconButton>
+        <IconButton size='small'>
+          <FlagIcon code='de' />
         </IconButton>
         <AvatarButton variant={ThemeConfig.hasDivider ? "outlined" : "text"}>
           <Avatar sx={{ width: avatarSize, height: avatarSize }}>H</Avatar>

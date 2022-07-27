@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button } from "@mui/material";
 import { UserProps } from '@types';
 import { Container, HashTagButton } from "components/commons";
 import { MessagePostBox, StatusPostBox } from "./partials";
@@ -37,7 +37,7 @@ function FeedSection() {
   return (
     <Box className='flex flex-col gap-6 w-[30rem]'>
       <MessagePostBox />
-      <Box className='w-full flex flex-col gap-6'>
+      <Box className='w-full flex flex-col gap-4'>
         <StatusPostBox postId='1' timestamp={new Date().getTime()} message='hello world' user={fakeUser} />
         <StatusPostBox postId='1' timestamp={new Date().getTime()} message='hello world' user={fakeUser} />
         <StatusPostBox postId='1' timestamp={new Date().getTime()} message='hello world' user={fakeUser} />
@@ -45,6 +45,7 @@ function FeedSection() {
         <StatusPostBox postId='1' timestamp={new Date().getTime()} message='hello world' user={fakeUser} />
         <StatusPostBox postId='1' timestamp={new Date().getTime()} message='hello world' user={fakeUser} />
         <StatusPostBox postId='1' timestamp={new Date().getTime()} message='hello world' user={fakeUser} />
+        <Button>Load More</Button>
       </Box>
     </Box>
   );
