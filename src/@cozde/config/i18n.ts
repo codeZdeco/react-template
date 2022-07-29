@@ -1,9 +1,28 @@
 import { LangaugeSettingProps } from "@types";
 
 const instance: LangaugeSettingProps = {
-  langs: [],
+  langs: [
+    {
+      name: "Vietnam",
+      code: "vi",
+      country_code: "vie",
+      icon: "vi",
+    },
+    {
+      name: "Germany",
+      code: "de",
+      country_code: "de",
+      icon: "de",
+    },
+    {
+      name: "English",
+      code: "en",
+      country_code: "usa",
+      icon: "en",
+    },
+  ],
   options: {
-    supportedLngs: ["en"],
+    supportedLngs: ["en", "vi", "de"],
     fallbackLng: "en",
     debug: false,
     // Options for language detector

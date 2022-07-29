@@ -1,7 +1,7 @@
 import { RouteSettingProps } from "@types";
 import { RouteType } from "@enum";
 import CMSBaseLayout from "@cozde/layout/CMSBaseLayout";
-import { HomePage, FeedPage } from "components/pages";
+import { HomePage, FeedPage, UtilPage, ProductPage } from "components/pages";
 
 export const paths: { [path: string]: string } = {
   home: "home",
@@ -12,6 +12,8 @@ export const paths: { [path: string]: string } = {
   setting: "setting",
   profile: "profile",
   user_setting: "user/setting",
+  product: "utils/product",
+  customer: "utils/customer",
 };
 
 const instance: RouteSettingProps = {
@@ -35,6 +37,24 @@ const instance: RouteSettingProps = {
           path: paths.feed,
           type: RouteType.Element,
           element: <FeedPage />,
+        },
+        {
+          path: paths.utils,
+          type: RouteType.Nested,
+          element: <UtilPage />,
+          children: [
+            {
+              path: paths.product,
+              type: RouteType.Element,
+              element: <ProductPage />,
+              index: true,
+            },
+            {
+              path: paths.customer,
+              type: RouteType.Element,
+              element: <>customer</>,
+            }
+          ]
         },
       ],
     },

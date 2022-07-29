@@ -9,9 +9,13 @@ import {
   IconButton,
   TextField,
   Autocomplete,
+  MenuList,
+  MenuItem,
+  ListItemIcon,
+  ListItemText,
 } from "@mui/material";
-import { FlagIcon, AdPropper } from '@cozde/core';
-import { ThemeConfig } from "@cozde/config";
+import { FlagIcon, AdPopper } from '@cozde/core';
+import { ThemeConfig, LangConfig } from "@cozde/config";
 
 const AvatarButton = styled(Button)(
   ({ theme }) => `
@@ -34,6 +38,23 @@ const SearchField = styled(TextField)(
     }
   `,
 );
+
+function FlagButton() {
+  return <AdPopper popup={<MenuList>
+    {LangConfig.langs.map((langItem) => (
+      <MenuItem>
+        <ListItemIcon>
+          <FlagIcon code={langItem.icon} />
+        </ListItemIcon>
+        <ListItemText>{langItem.name}</ListItemText>
+      </MenuItem>
+    ))}
+  </MenuList>}>
+    <IconButton size='small'>
+      <FlagIcon code='de' />
+    </IconButton>
+  </AdPopper>
+}
 
 function Header() {
   const theme = useTheme();
@@ -73,11 +94,7 @@ function Header() {
         <IconButton size='small'>
           <Icon color='primary'>forum</Icon>
         </IconButton>
-        <AdPropper popup={<>hello</>}>
-          <IconButton size='small'>
-            <FlagIcon code='de' />
-          </IconButton>
-        </AdPropper>
+        <FlagButton />
         <AvatarButton variant={ThemeConfig.hasDivider ? "outlined" : "text"}>
           <Avatar sx={{ width: avatarSize, height: avatarSize }}>H</Avatar>
           <Typography>John Doe</Typography>

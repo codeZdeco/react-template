@@ -1,5 +1,5 @@
-import { ClickAwayListener, Popper, PopperPlacementType } from '@mui/material';
-import React, { useRef, useState } from 'react';
+import { ClickAwayListener, Popover, PopperPlacementType } from '@mui/material';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 interface AdPopperProps {
   children: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
@@ -9,31 +9,30 @@ interface AdPopperProps {
 
 function AdPopper(props: AdPopperProps) {
   const { children, popup, ...popperProps } = props;
-  const ref = React.createRef<any>();
-  const [open, setOpen] = useState<boolean>(false);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   const clone = React.cloneElement(props.children, {
-    onClick: (_event: MouseEvent) => {
-      setOpen(!open);
+    onClick: (event: React.MouseEvent<HTMLElement>) => {
+      console.log(event.currentTarget, anchorEl);
+      setAnchorEl(anchorEl ? null : event.currentTarget);
     },
-    ref,
   });
 
-  console.log(ref);
+  const handleClose = () => setAnchorEl(null);
 
-  const handleClose = () => {
-    console.log('closing')
-    setOpen(false);
-  };
+  const isOpen = useMemo(() => !!anchorEl, [anchorEl]);
 
   return (
     <>
       {clone}
-      <Popper {...popperProps} open={open} anchorEl={ref.current} transition>
+      <Popover {...popperProps} open={isOpen} anchorEl={anchorEl} anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'left',
+      }} onClose={handleClose}>
         <ClickAwayListener onClickAway={handleClose}>
           {popup}
         </ClickAwayListener>
-      </Popper>
+      </Popover>
     </>
   );
 }

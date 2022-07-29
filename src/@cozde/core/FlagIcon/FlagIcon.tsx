@@ -2,7 +2,7 @@ import { SvgIconProps, SvgIcon } from '@mui/material';
 import Flags from './flags';
 
 interface FlagIconProps extends SvgIconProps {
-  code: 'en' | 'vi' | 'de';
+  code: string;
 }
 
 function FlagIcon(props: FlagIconProps) {

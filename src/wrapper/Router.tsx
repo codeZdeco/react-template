@@ -78,7 +78,7 @@ function Routes() {
     // Return RouteObject props
     return {
       path,
-      index: index ? index : path === defaultRoute,
+      index: !!index ? index : path === defaultRoute,
       element: (
         <React.Suspense fallback={<LoadingScreen />}>
           {isAuth ? (
